@@ -1,9 +1,12 @@
-import './App.css';
+import styles from './App.module.css';
+import MainPageContainer from './components/MainPageContainer';
 
 function App() {
-  <div>
-    
-  </div>
+  return (
+    <div className={styles.main}>
+      <MainPageContainer />
+    </div>
+  )
 }
 
 export default App;

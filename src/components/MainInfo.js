@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   .card {
-    width: 500px;
+    width: 100%;
     height: 185px;
     padding: 20px 50px 25px 20px;
     margin-right: 50px;
@@ -42,49 +42,49 @@ const LowerColText = styled.div`
 `;
 
 const MainInfo = () => {
-  return (
-    <Styles>
-      <Card>
-        <Card.Body>
-          <Row>
-            <Col>
-              <Title>
-                <Card.Title>13 400 P</Card.Title>
-              </Title>
-            </Col>
-            <Col xs lg={4}>
-              <Card.Img
-                style={{ width: '110px', height: '35px' }}
-                src="https://bit.ly/37Y4YHu">
-              </Card.Img>
-            </Col>
-          </Row>
-        </Card.Body>
-        <Card.Body>
-          <Row>
-            <Col><UpperColText><Card.Text>MOW - HKT</Card.Text></UpperColText></Col>
-            <Col><UpperColText><Card.Text>В ПУТИ</Card.Text></UpperColText></Col>
-            <Col><UpperColText><Card.Text>2 ПЕРЕСАДКИ</Card.Text></UpperColText></Col>
-          </Row>
-          <Row >
-            <Col><LowerColText><Card.Text>10:45 - 08:00</Card.Text></LowerColText></Col>
-            <Col><LowerColText><Card.Text>21ч 15м</Card.Text></LowerColText></Col>
-            <Col><LowerColText><Card.Text>HKG, JNB</Card.Text></LowerColText></Col>
-          </Row>
-          <Row>
-            <Col><UpperColText><Card.Text>MOW - HKT</Card.Text></UpperColText></Col>
-            <Col><UpperColText><Card.Text>В ПУТИ</Card.Text></UpperColText></Col>
-            <Col><UpperColText><Card.Text>1 ПЕРЕСАДКА</Card.Text></UpperColText></Col>
-          </Row>
-          <Row>
-            <Col><LowerColText><Card.Text>10:20 - 00:50</Card.Text></LowerColText></Col>
-            <Col><LowerColText><Card.Text>13ч 30м</Card.Text></LowerColText></Col>
-            <Col><LowerColText><Card.Text>HKG</Card.Text></LowerColText></Col>
-          </Row>
-        </Card.Body>
-      </Card>
-    </Styles>
-  )
+    return (
+        <Styles>
+            <Card>
+                <Card.Body>
+                    <Row>
+                        <Col>
+                            <Title>
+                                <Card.Title>13 400 P</Card.Title>
+                            </Title>
+                        </Col>
+                        <Col xs lg={4}>
+                            <Card.Img
+                                style={{ width: '110px', height: '35px' }}
+                                src="https://bit.ly/37Y4YHu">
+                            </Card.Img>
+                        </Col>
+                    </Row>
+                </Card.Body>
+                <Card.Body>
+                    <Row>
+                        <Col><UpperColText><Card.Text>MOW - HKT</Card.Text></UpperColText></Col>
+                        <Col><UpperColText><Card.Text>В ПУТИ</Card.Text></UpperColText></Col>
+                        <Col><UpperColText><Card.Text>2 ПЕРЕСАДКИ</Card.Text></UpperColText></Col>
+                    </Row>
+                    <Row >
+                        <Col><LowerColText><Card.Text>10:45 - 08:00</Card.Text></LowerColText></Col>
+                        <Col><LowerColText><Card.Text>21ч 15м</Card.Text></LowerColText></Col>
+                        <Col><LowerColText><Card.Text>HKG, JNB</Card.Text></LowerColText></Col>
+                    </Row>
+                    <Row>
+                        <Col><UpperColText><Card.Text>MOW - HKT</Card.Text></UpperColText></Col>
+                        <Col><UpperColText><Card.Text>В ПУТИ</Card.Text></UpperColText></Col>
+                        <Col><UpperColText><Card.Text>1 ПЕРЕСАДКА</Card.Text></UpperColText></Col>
+                    </Row>
+                    <Row>
+                        <Col><LowerColText><Card.Text>10:20 - 00:50</Card.Text></LowerColText></Col>
+                        <Col><LowerColText><Card.Text>13ч 30м</Card.Text></LowerColText></Col>
+                        <Col><LowerColText><Card.Text>HKG</Card.Text></LowerColText></Col>
+                    </Row>
+                </Card.Body>
+            </Card>
+        </Styles>
+    )
 }
 
 export default MainInfo;

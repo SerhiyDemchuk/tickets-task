@@ -1,16 +1,26 @@
-import MainPageContainer from './components/MainPageContainer';
-import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  background: #F3F7FA;
-  width: 960px;
-`;
+import Col from 'react-bootstrap/esm/Col';
+import Row from 'react-bootstrap/esm/Row';
+
+import Container from 'react-bootstrap/esm/Container';
+import MainPageContainer from './components/MainPageContainer';
+import TransfersCard from './styled/MainPage/TransfersCard';
+import { Wrapper } from './styled/MainPage/Wrapper';
 
 function App() {
+
   return (
     <Wrapper>
-      <MainPageContainer />
+      <Container>
+        <Row>
+          <Col lg={4} xl={4}>
+            <TransfersCard />
+          </Col>
+          <Col sm={12} md={12} lg={8} xl={8}>
+            <MainPageContainer />
+          </Col>
+        </Row>
+      </Container>
     </Wrapper>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CheckboxContainer = styled.div`
@@ -55,17 +56,21 @@ const Styles = styled.div`
   }
 `;
 
-const Checkbox = ({ text, className, checked, ...props }) => (
+export const Checkbox = ({ url, text, className, checked, ...props }) => (
   <Styles>
-    <CheckboxContainer className={className}>
-      <HiddenCheckbox checked={checked} {...props} />
-      <StyledCheckbox checked={checked}>
-        <Icon viewBox="0 0 24 24">
-          <polyline points="20 6 9 17 4 12" />
-        </Icon>
-      </StyledCheckbox>
-    </CheckboxContainer>
-    <Text>{text}</Text>
+    <Link to={`/${url}`}>
+      <CheckboxContainer className={className}>
+        <HiddenCheckbox checked={checked} {...props} />
+        <StyledCheckbox checked={checked}>
+          <Icon viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12" />
+          </Icon>
+        </StyledCheckbox>
+      </CheckboxContainer>
+      <Text>
+        {text}
+      </Text>
+    </Link>
   </Styles>
 );
 

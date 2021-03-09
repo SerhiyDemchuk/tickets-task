@@ -7,16 +7,10 @@ export const Styles = styled.div`
     padding: 20px 50px 25px 20px;
     margin-top: 20px;
     margin-right: 100px;
-    // @media (max-width: 992px) {
-    //   width: 350px;
-    // }
   },
   .card-body {
     width: 500px;
     margin: 0;
     padding: 0;
-    // @media (max-width: 992px) {
-    //   width: 350px;
-    // }
-  },
+  }
 `;

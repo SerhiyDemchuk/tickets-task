@@ -2,7 +2,7 @@ import ToggleButton from 'react-bootstrap/esm/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/esm/ToggleButtonGroup';
 import styled from 'styled-components';
 
-export const RightSide = styled.div`
+export const Button = styled.div`
 #button_1 {
 background-color: #2196F3;
 font-size: 15px;
@@ -22,12 +22,12 @@ width: 100%;
 
 const Buttons = () => {
     return (
-        <RightSide>
+        <Button>
             <ToggleButtonGroup id="buttonGroup" type="checkbox">
                 <ToggleButton id="button_1" checked>САМЫЙ ДЕШЕВЫЙ</ToggleButton>
                 <ToggleButton id="button_2">САМЫЙ БЫСТРЫЙ</ToggleButton>
             </ToggleButtonGroup>
-        </RightSide>
+        </Button>
     );
 };
 

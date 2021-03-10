@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card } from 'react-bootstrap/esm';
+import { Card, Col, Row } from 'react-bootstrap/esm';
 
 import Info from './Info';
 import { Styles, Title } from './Styles';

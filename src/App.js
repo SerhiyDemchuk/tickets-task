@@ -4,9 +4,8 @@ import Row from 'react-bootstrap/esm/Row';
 import Container from 'react-bootstrap/esm/Container';
 import { Route, Switch } from 'react-router-dom';
 
-import MainPageContainer from './components/MainPage/MainPageContainer';
+import { MainPageContainer, TransfersCardContainer } from './components';
 import { Wrapper } from './styled/MainPage/Wrapper';
-import TransfersCardContainer from './components/TransfersCard/TransfersCardContainer';
 
 function App() {
     return (

@@ -15,8 +15,7 @@ export default function mainReducer(state = initialState, action) {
             return { ...state, data: action.data }
         case FAIL_REQUEST:
             return { ...state, error: action.error }
-        default:
-            return state;
+        default: return state;
     }
 }
 

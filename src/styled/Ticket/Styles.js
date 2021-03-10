@@ -14,3 +14,9 @@ export const Styles = styled.div`
     padding: 0;
   }
 `;
+
+export const Title = styled.div`
+  .card-title {
+    color: #2196F3;
+  }
+`;

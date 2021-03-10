@@ -1,92 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import Card from "react-bootstrap/esm/Card";
-import Form from 'react-bootstrap/Form';
+import { Form, Formik } from 'formik';
 
 import Checkbox from "./Checkbox";
 
 export const LeftSide = styled.div`
-.form-label {
-  padding-left: 20px;
-  padding-top: 20px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #777777;
-  text-align: left;
-},
-.card {
-    width: 230px;
-    @media ()
-},
 .card-body {
     height: 258px;
     padding: 0;
-},
-.form-group {
-  display: flex;
-  flex-direction: column;
 }
 `;
 
-const StyledLink = styled(NavLink)`
-    :hover {
-        text-decoration: none;
-    }
-`;
-
 const TransfersCard = () => {
-    const [checked, setChecked] = useState(false);
-    const handleCheckboxChange = () => {
-        setChecked(!checked);
-    };
+    const checkboxOptions = [
+        { path: '/vse', key: 'Option1', value: 'Все' },
+        { path: '/0', key: 'Option2', value: 'Без пересадки' },
+        { path: '/1', key: 'Option3', value: '1 пересадка' },
+        { path: '/2', key: 'Option4', value: '2 пересадки' },
+        { path: '/3', key: 'Option5', value: '3 пересадки' }
+    ]
+    const initialValues = {
+        checkboxOptions: []
+    }
 
     return (
         <LeftSide>
             <Card>
                 <Card.Body>
-                    <Form>
-                        <Form.Group>
-                            <Form.Label>КОЛИЧЕСТВО ПЕРЕСАДОК</Form.Label>
-                            <label>
-                                <StyledLink to="/">
-                                    <Checkbox
-                                        checked={checked}
-                                        onChange={handleCheckboxChange}
-                                        text="Все"
-                                    />
-                                </StyledLink>
-                                <StyledLink to="/0">
-                                    <Checkbox
-                                        onChange={handleCheckboxChange}
-                                        checked={checked}
-                                        text="Без пересадок"
-                                    />
-                                </StyledLink>
-                                <StyledLink to="/1">
-                                    <Checkbox
-                                        checked={checked}
-                                        onChange={handleCheckboxChange}
-                                        text="1 пересадка"
-                                    />
-                                </StyledLink>
-                                <StyledLink to="/2">
-                                    <Checkbox
-                                        checked={checked}
-                                        onChange={handleCheckboxChange}
-                                        text="2 пересадки"
-                                    />
-                                </StyledLink>
-                                <StyledLink to="/3">
-                                    <Checkbox
-                                        checked={checked}
-                                        onChange={handleCheckboxChange}
-                                        text="3 пересадки"
-                                    />
-                                </StyledLink>
-                            </label>
-                        </Form.Group>
-                    </Form>
+                    <Formik initialValues={initialValues}>
+                        {formik => (
+                            <Form>
+                                <Checkbox
+                                    label="КОЛИЧЕСТВО ПЕРЕСАДОК"
+                                    name="checkboxOptions"
+                                    options={checkboxOptions}
+                                />
+                            </Form>
+                        )}
+                    </Formik>
                 </Card.Body>
             </Card>
         </LeftSide>

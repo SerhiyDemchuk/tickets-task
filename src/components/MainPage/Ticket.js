@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap/esm';
+import { Styles, Title } from '../../styled/MainPage/MainPageStyles';
 
 import Info from './Info';
-import { Styles, Title } from './Styles';
 
-const Ticket = ({ filter, convCurrency, stopsAmount, timeConvert, sliceTime, price, segments = [], ...props }) => {
-    return (
-        <Styles>
-            <Card>
+const Ticket = ({ stops, filter, convCurrency, stopsAmount, timeConvert, sliceTime, price, segments = [] }) =>
+    <Styles>
+        {stops.length === 1
+            ? <Card>
                 <Card.Body>
                     <Row>
                         <Col xs={6} sm={7} md={7} lg={8} xl={7}>
@@ -42,8 +42,8 @@ const Ticket = ({ filter, convCurrency, stopsAmount, timeConvert, sliceTime, pri
                     }
                 </Card.Body>
             </Card>
-        </Styles>
-    )
-}
+            : null
+        }
+    </Styles>
 
 export default Ticket;

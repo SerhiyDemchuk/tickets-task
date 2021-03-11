@@ -1,13 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
-
-import reportWebVitals from './reportWebVitals';
-import { Body } from './Body';
 import { store } from './redux/store';
+
+import App from './App';
+import { Body } from './Body';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import reportWebVitals from './reportWebVitals';
+
 
 ReactDOM.render(
   // <React.StrictMode>

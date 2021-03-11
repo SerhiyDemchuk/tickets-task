@@ -1,8 +1,8 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 
-const SUCCESSFUL_REQUEST = 'tickets-task/mainReducer/SUCCESSFUL_REQUEST';
-const FAIL_REQUEST = 'tickets-task/mainReducer/FAIL_REQUEST';
-const SEND_REQUEST = 'tickets-task/mainReducer/SEND_REQUEST';
+const SUCCESSFUL_REQUEST = 'tickets-task/tickets/SUCCESSFUL_REQUEST';
+const FAIL_REQUEST = 'tickets-task/tickets/FAIL_REQUEST';
+const SEND_REQUEST = 'tickets-task/tickets/SEND_REQUEST';
 
 const initialState = {
     data: [],

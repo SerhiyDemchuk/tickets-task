@@ -1,37 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { convCurrency, sliceTime, timeConvert } from '../../utils/MainPage';
 import MainPage from './MainPage';
 
-const MainPageContainer = (props) => {
+const MainPageContainer = ({ match }) => {
 
-    let { filter } = props.match.params;
+    let { filter } = match.params;
 
     filter = parseInt(filter);
 
     const dispatch = useDispatch();
     const data = useSelector(state => state.data);
-
-    const sliceTime = (time) => {
-        const a = time.slice(11, 16);
-        return `${a} - `;
-    }
-
-    const convCurrency = (currency) => {
-        return currency.toLocaleString('ru-RU', { 
-            style: 'decimal',
-            minimumFractionDigits: 0 
-        }) + ' Р';
-    }
-
-    const timeConvert = (time) => {
-        const num = time;
-        const hours = (num / 60);
-        const rhours = Math.floor(hours);
-        const minutes = (hours - rhours) * 60;
-        const rminutes = Math.round(minutes);
-        return `${rhours}ч ${rminutes}м`;
-    }
 
     const stopsAmount = (stops) => {
         if (stops.length === 0) {
@@ -44,7 +24,7 @@ const MainPageContainer = (props) => {
     }
 
     useEffect(() => {
-        dispatch({ type: 'tickets-task/mainReducer/SEND_REQUEST' });
+        dispatch({ type: 'tickets-task/tickets/SEND_REQUEST' });
     }, [dispatch]);
 
     return (

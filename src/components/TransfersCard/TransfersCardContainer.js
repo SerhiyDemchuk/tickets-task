@@ -5,7 +5,7 @@ import TransfersCard from './TransfersCard';
 const checkboxOptions = [
     { id: 1, path: '/all', value: 'Все', checked: true },
     { id: 2, path: '/no_stops', value: 'Без пересадки', checked: false },
-    { id: 3, path: '/one_stop', value: '1 пересадка', checked: true },
+    { id: 3, path: '/one_stop', value: '1 пересадка', checked: false },
     { id: 4, path: '/two_stops', value: '2 пересадки', checked: false },
     { id: 5, path: '/three_stops', value: '3 пересадки', checked: false }
 ]
@@ -25,11 +25,13 @@ const TransfersCardContainer = () => {
     }
 
     return (
+        <div>
         <TransfersCard
             initialValues={checkboxOptions}
             checkboxOptions={options}
             toggleCheckbox={toggleCheckbox}
-        />
+            />
+            </div>
     )
 }
 

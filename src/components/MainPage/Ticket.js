@@ -6,11 +6,11 @@ import Info from './Info';
 
 const Ticket = ({ stops, filter, convCurrency, stopsAmount, timeConvert, fromToTime, price, segments = [] }) =>
     <Styles>
-        {stops.length === 1
+        {stops.length === 2
             ? <Card>
                 <Card.Body>
                     <Row>
-                        <Col xs={6} sm={7} md={7} lg={8} xl={7}>
+                        <Col xs={4} sm={5} md={5} lg={8} xl={7}>
                             <Title>
                                 <Card.Title>{convCurrency(price)}</Card.Title>
                             </Title>

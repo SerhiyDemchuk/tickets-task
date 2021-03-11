@@ -5,7 +5,7 @@ import { Button } from '../../styled/MainPage/MainPageStyles';
 
 const Buttons = () =>
     <Button>
-        <ToggleButtonGroup id="buttonGroup" type="checkbox">
+        <ToggleButtonGroup type="checkbox">
             <ToggleButton id="button_1" checked>САМЫЙ ДЕШЕВЫЙ</ToggleButton>
             <ToggleButton id="button_2">САМЫЙ БЫСТРЫЙ</ToggleButton>
         </ToggleButtonGroup>

@@ -14,20 +14,23 @@ export default function mainReducer(state = initialState, action) {
     switch (action.type) {
         case SUCCESSFUL_REQUEST:
             return { ...state, data: action.data }
+        case FILTER_DATA:
+            return { ...state, data: action.data }
         case FAIL_REQUEST:
             return { ...state, error: action.error }
         default: return state;
     }
 }
 
-function filterData(data,filter) {
-    data.map(item => item.segments.map(info => (
-        info.stops.length === filter ? info : null
-    )))
-}
+// function filterData(data,filter) {
+//     const a = data.map(item => item.segments.map(info => (
+//         info.stops.length === filter ? info : null
+//     )))
+//     put(filterDataAction(a));
+// }
 
-export function filterDataAction(filter) {
-    return { type: FILTER_DATA, filter };
+export function filterDataAction(data) {
+    return { type: FILTER_DATA, data };
 }
 
 export function successRequestAction(data) {
@@ -53,7 +56,7 @@ export function* fetchTicketsAsync() {
             .then(data => data.json())
             .then(response => response.tickets));
         yield put(successRequestAction(data));
-        yield put(filterData(data, 2))
+        // yield put(filterData(data, 2));
     } catch (error) {
         yield put(failRequestAction(error));
     }

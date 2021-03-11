@@ -2,16 +2,15 @@ import React from 'react';
 import { Field } from 'formik';
 import { Item, Label, Styles, Text } from '../../styled/TransfersCard/TransfersCardStyles';
 
-const Checkbox = ({ toggleCheckbox, label, name, options, ...rest }) =>
+const Checkbox = ({ toggleCheckbox, label, name, options }) =>
   <Styles>
     <Label>{label}</Label>
-    <Field name={name} {...rest}>
+    <Field name={name}>
       {({ field }) => {
         return options.map(option => {
           return (
             <Item key={option.id} to={option.path}
-              onClick={() => toggleCheckbox(option)}
-            >
+              onClick={() => toggleCheckbox(option)}>
               <input
                 type="checkbox"
                 id={option.id}

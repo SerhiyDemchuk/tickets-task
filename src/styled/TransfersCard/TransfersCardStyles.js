@@ -1,4 +1,4 @@
-import { NavLink } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Styles = styled.div`
@@ -34,5 +34,11 @@ export const LeftSide = styled.div`
 .card-body {
     height: 258px;
     padding: 0;
+},
+.card {
+  @media(max-width: 576px) {
+    width: 250px;
+    margin-bottom: 10px;
+  }
 }
 `;

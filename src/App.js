@@ -11,10 +11,10 @@ const App = () =>
     <Wrapper>
         <Container>
             <Row>
-                <Col lg={4} xl={4}>
+                <Col sm={7} md={5} lg={4} xl={4}>
                     <TransfersCardContainer />
                 </Col>
-                <Col sm={12} md={12} lg={8} xl={8}>
+                <Col sm={5} md={6} lg={8} xl={8}>
                     <Switch>
                         <Route path="/:filter?"
                             component={MainPageContainer}

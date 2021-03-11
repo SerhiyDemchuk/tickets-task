@@ -23,11 +23,17 @@ export const Styles = styled.div`
     padding: 20px 50px 25px 20px;
     margin-top: 20px;
     margin-right: 100px;
+    @media(max-width: 992px) {
+      width: 250px;
+    }
   },
   .card-body {
     width: 500px;
     margin: 0;
     padding: 0;
+    @media(max-width: 992px) {
+      width: 250px;
+    }
   }
 `;
 
@@ -43,7 +49,7 @@ export const LowerColText = styled.div`
   color: #4A4A4A;
   font-size: 15px;
   font-weight: 500;
-  @media (max-width: 992px) {
+  @media(max-width: 992px) {
     font-size: 13px;
   }
 }
@@ -62,7 +68,13 @@ export const Button = styled.div`
     font-size: 15px;
     font-weight: 600;
 },
-#buttonGroup {
-    width: 100%;
+.btn-group-toggle {
+  width: 100%;
+  @media(width: 992px) {
+    width: 50%;
+  }
+  @media(max-width: 768px) {
+    width: 250px;
+  }
 }
 `;

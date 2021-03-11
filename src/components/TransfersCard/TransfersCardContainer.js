@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import TransfersCard from './TransfersCard';
 
 const checkboxOptions = [
-    { path: '/vse', key: 'Option1', value: 'Все' },
-    { path: '/0', key: 'Option2', value: 'Без пересадки' },
-    { path: '/1', key: 'Option3', value: '1 пересадка' },
-    { path: '/2', key: 'Option4', value: '2 пересадки' },
-    { path: '/3', key: 'Option5', value: '3 пересадки' }
+    { id: 1, path: '/all', value: 'Все', checked: true },
+    { id: 2, path: '/no_stops', value: 'Без пересадки', checked: false },
+    { id: 3, path: '/one_stop', value: '1 пересадка', checked: true },
+    { id: 4, path: '/two_stops', value: '2 пересадки', checked: false },
+    { id: 5, path: '/three_stops', value: '3 пересадки', checked: false }
 ]
 
-const initialValues = {
-    checkboxOptions: []
-}
+const TransfersCardContainer = () => {
+    
+    const [options, setOptions] = useState(checkboxOptions);
+    
+    const toggleCheckbox = (option) => {
+        const updatedOptions = options.map(item => {
+            if (item.id === option.id) {
+                item.checked = !item.checked
+            }
+            return item;
+        })
+        setOptions(updatedOptions);
+    }
 
-const TransfersCardContainer = () =>
-    <TransfersCard
-        initialValues={initialValues}
-        checkboxOptions={checkboxOptions}
-    />
+    return (
+        <TransfersCard
+            initialValues={checkboxOptions}
+            checkboxOptions={options}
+            toggleCheckbox={toggleCheckbox}
+        />
+    )
+}
 
 export default TransfersCardContainer;

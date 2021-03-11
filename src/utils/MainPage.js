@@ -1,6 +1,8 @@
-export const sliceTime = (time) => {
-    const a = time.slice(11, 16);
-    return `${a} - `;
+export const fromToTime = (time) => {
+    const convertedTime = new Date(time);
+    const hours = (convertedTime.getHours() < 10 ? '0' : '') + convertedTime.getHours();
+    const minutes = (convertedTime.getMinutes() < 10 ? '0' : '') + convertedTime.getMinutes();
+    return `${hours}:${minutes} - `;
 }
 
 export const convCurrency = (currency) => {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { convCurrency, sliceTime, timeConvert } from '../../utils/MainPage';
+import { convCurrency, fromToTime, timeConvert } from '../../utils/MainPage';
 import MainPage from './MainPage';
 
 const MainPageContainer = ({ match }) => {
@@ -33,7 +33,7 @@ const MainPageContainer = ({ match }) => {
                 convCurrency={convCurrency}
                 stopsAmount={stopsAmount}
                 timeConvert={timeConvert}
-                sliceTime={sliceTime}
+                fromToTime={fromToTime}
                 data={data}
                 filter={filter}
             />

@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import Checkbox from "./Checkbox";
 import { LeftSide } from '../../styled/TransfersCard/TransfersCardStyles';
 
-const TransfersCard = ({ initialValues, checkboxOptions }) =>
+const TransfersCard = ({ toggleCheckbox, initialValues, checkboxOptions }) =>
     <LeftSide>
         <Card>
             <Card.Body>
@@ -16,6 +16,7 @@ const TransfersCard = ({ initialValues, checkboxOptions }) =>
                                 label="КОЛИЧЕСТВО ПЕРЕСАДОК"
                                 name="checkboxOptions"
                                 options={checkboxOptions}
+                                toggleCheckbox={toggleCheckbox}
                             />
                         </Form>
                     )}

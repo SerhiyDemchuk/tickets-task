@@ -4,7 +4,7 @@ import { Styles, Title } from '../../styled/MainPage/MainPageStyles';
 
 import Info from './Info';
 
-const Ticket = ({ stops, filter, convCurrency, stopsAmount, timeConvert, sliceTime, price, segments = [] }) =>
+const Ticket = ({ stops, filter, convCurrency, stopsAmount, timeConvert, fromToTime, price, segments = [] }) =>
     <Styles>
         {stops.length === 1
             ? <Card>
@@ -30,7 +30,7 @@ const Ticket = ({ stops, filter, convCurrency, stopsAmount, timeConvert, sliceTi
                                 <Info
                                     stopsAmount={stopsAmount}
                                     timeConvert={timeConvert}
-                                    sliceTime={sliceTime}
+                                    fromToTime={fromToTime}
                                     origin={item.origin}
                                     destination={item.destination}
                                     date={item.date}

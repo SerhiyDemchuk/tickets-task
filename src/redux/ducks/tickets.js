@@ -3,6 +3,7 @@ import { put, takeEvery, call } from 'redux-saga/effects';
 const SUCCESSFUL_REQUEST = 'tickets-task/tickets/SUCCESSFUL_REQUEST';
 const FAIL_REQUEST = 'tickets-task/tickets/FAIL_REQUEST';
 const SEND_REQUEST = 'tickets-task/tickets/SEND_REQUEST';
+const FILTER_DATA = 'tickets-task/tickets/FILTER_DATA';
 
 const initialState = {
     data: [],
@@ -17,6 +18,16 @@ export default function mainReducer(state = initialState, action) {
             return { ...state, error: action.error }
         default: return state;
     }
+}
+
+function filterData(data,filter) {
+    data.map(item => item.segments.map(info => (
+        info.stops.length === filter ? info : null
+    )))
+}
+
+export function filterDataAction(filter) {
+    return { type: FILTER_DATA, filter };
 }
 
 export function successRequestAction(data) {
@@ -42,6 +53,7 @@ export function* fetchTicketsAsync() {
             .then(data => data.json())
             .then(response => response.tickets));
         yield put(successRequestAction(data));
+        yield put(filterData(data, 2))
     } catch (error) {
         yield put(failRequestAction(error));
     }

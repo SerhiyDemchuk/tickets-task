@@ -35,7 +35,6 @@ export const Styles = styled.div`
   }
 `;
 
-
 export const Title = styled.div`
   .card-title {
     color: #2196F3;
@@ -48,6 +47,7 @@ export const LowerColText = styled.div`
   font-weight: 500;
   @media(max-width: 992px) {
     font-size: 13px;
+  }
 `;
 
 export const Button = styled.div`
@@ -67,9 +67,9 @@ export const Button = styled.div`
   width: 100%;
   @media(width: 992px) {
     width: 50%;
-  }
+  };
   @media(max-width: 768px) {
     width: 250px;
-  }
+  };
 }
 `;

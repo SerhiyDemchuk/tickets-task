@@ -1,10 +1,12 @@
 import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap/esm';
-import { Styles, Title } from '../../styled/MainPage/MainPageStyles';
 
 import Info from './Info';
 
-const Ticket = ({ stops, filter, convCurrency, stopsAmount, timeConvert, fromToTime, price, segments = [] }) =>
+import { Styles, Title } from '../../styled/MainPage/MainPageStyles';
+
+
+const Ticket = ({ convCurrency, stopsAmount, timeConvert, fromToTime, price, segments = [] }) =>
     <Styles>
         <Card>
             <Card.Body>

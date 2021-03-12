@@ -8,7 +8,7 @@ export const fromToTime = (time) => {
 export const convCurrency = (currency) => {
     return currency.toLocaleString('ru-RU', { 
         style: 'decimal',
-        minimumFractionDigits: 0 
+        minimumFractionDigits: 0
     }) + ' Р';
 }
 

@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { convCurrency, fromToTime, timeConvert } from '../../utils/MainPage';
 import MainPage from './MainPage';
 
-const MainPageContainer = ({ match }) => {
+import { convCurrency, fromToTime, timeConvert } from '../../utils/MainPage';
 
-    let { filter } = match.params;
-
-    filter = parseInt(filter);
+const MainPageContainer = () => {
 
     const dispatch = useDispatch();
     const data = useSelector(state => state.data);
@@ -35,7 +32,6 @@ const MainPageContainer = ({ match }) => {
                 timeConvert={timeConvert}
                 fromToTime={fromToTime}
                 data={data}
-                filter={filter}
             />
         </div>
     )

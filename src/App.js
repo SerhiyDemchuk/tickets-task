@@ -1,8 +1,6 @@
 import React from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import Container from 'react-bootstrap/esm/Container';
 import { Route, Switch } from 'react-router-dom';
+import { Col, Row, Container } from 'react-bootstrap/esm';
 
 import { MainPageContainer, TransfersCardContainer } from './components';
 import { Wrapper } from './styled/Styles';

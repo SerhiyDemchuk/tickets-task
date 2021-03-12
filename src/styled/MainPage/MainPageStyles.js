@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const UpperColText = styled.div`
-.card-text {
   color: #ACBAC2;
   margin-top: 15px;
   font-size: 14px;
@@ -13,7 +12,6 @@ export const UpperColText = styled.div`
     margin: 0;
     font-size: 6px;
   }
-}
 `;
 
 export const Styles = styled.div`
@@ -45,14 +43,11 @@ export const Title = styled.div`
 `;
 
 export const LowerColText = styled.div`
-.card-text {
   color: #4A4A4A;
   font-size: 15px;
   font-weight: 500;
   @media(max-width: 992px) {
     font-size: 13px;
-  }
-}
 `;
 
 export const Button = styled.div`

@@ -3,7 +3,7 @@ import React from 'react';
 import Ticket from './Ticket';
 import Buttons from './Buttons';
 
-const MainPage = ({ filter, convCurrency, stopsAmount, timeConvert, fromToTime, data }) =>
+const MainPage = ({ convCurrency, stopsAmount, timeConvert, fromToTime, data }) =>
     <div>
         <Buttons />
         {data
@@ -15,8 +15,6 @@ const MainPage = ({ filter, convCurrency, stopsAmount, timeConvert, fromToTime, 
                         timeConvert={timeConvert}
                         fromToTime={fromToTime}
                         segments={item.segments}
-                        // stops={info.stops}
-                        filter={filter}
                         price={item.price}
                     />
                 </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'formik';
+
 import { Item, Label, Styles, Text } from '../../styled/TransfersCard/TransfersCardStyles';
 
 const Checkbox = ({ toggleCheckbox, label, name, options }) =>
@@ -25,5 +26,5 @@ const Checkbox = ({ toggleCheckbox, label, name, options }) =>
       }}
     </Field>
   </Styles>
-
+  
 export default Checkbox;

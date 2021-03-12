@@ -1,9 +1,17 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 
-const SUCCESSFUL_REQUEST = 'tickets-task/tickets/SUCCESSFUL_REQUEST';
-const FAIL_REQUEST = 'tickets-task/tickets/FAIL_REQUEST';
-const SEND_REQUEST = 'tickets-task/tickets/SEND_REQUEST';
-const FILTER_DATA = 'tickets-task/tickets/FILTER_DATA';
+import {
+    failRequestAction,
+    sortDataAction,
+    successRequestAction
+} from './actions/tickets';
+import {
+    FAIL_REQUEST,
+    FILTER_DATA,
+    SEND_REQUEST,
+    SORT_DATA,
+    SUCCESSFUL_REQUEST
+} from './actionCreators/tickets';
 
 const initialState = {
     data: [],
@@ -13,8 +21,8 @@ const initialState = {
 export default function mainReducer(state = initialState, action) {
     switch (action.type) {
         case SUCCESSFUL_REQUEST:
-            return { ...state, data: action.data }
         case FILTER_DATA:
+        case SORT_DATA:
             return { ...state, data: action.data }
         case FAIL_REQUEST:
             return { ...state, error: action.error }
@@ -22,26 +30,23 @@ export default function mainReducer(state = initialState, action) {
     }
 }
 
-function filterData(data, filter) {
+export function filterData(data, filter) {
     const filteredData = [];
-    data.map(item => item.segments.map(info => info.stops.length === filter ? filteredData.push(item) : null));
+    data.map(item => item.segments.map(info =>
+        info.stops.length === filter
+            ? filteredData.push(item)
+            : null
+    ));
     return filteredData;
 }
 
-export function filterDataAction(data) {
-    return { type: FILTER_DATA, data };
-}
-
-export function successRequestAction(data) {
-    return { type: SUCCESSFUL_REQUEST, data };
-}
-
-export function failRequestAction(error) {
-    return { type: FAIL_REQUEST, error };
-}
-
-export function sendRequest() {
-    return { type: SEND_REQUEST };
+export function onSortByPrice(data) {
+    const sortedByPrice = data.sort((a, b) => {
+        if (a.price > b.price) return 1;
+        if (a.price < b.price) return -1;
+        return 0;
+    });
+    sortDataAction(sortedByPrice);
 }
 
 export function* watchRequest() {
@@ -55,7 +60,7 @@ export function* fetchTicketsAsync() {
             .then(data => data.json())
             .then(response => response.tickets));
         const filteredData = yield filterData(data, 2);
-        yield put(filterDataAction(filteredData));
+        yield put(successRequestAction(filteredData));
     } catch (error) {
         yield put(failRequestAction(error));
     }

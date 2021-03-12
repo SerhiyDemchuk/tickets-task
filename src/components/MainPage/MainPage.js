@@ -7,20 +7,19 @@ const MainPage = ({ filter, convCurrency, stopsAmount, timeConvert, fromToTime, 
     <div>
         <Buttons />
         {data
-            ? data.map((item) => (
-                item.segments.map((info, index) => <div key={index}>
+            ? data.map((item, index) => (
+                <div key={index}>
                     <Ticket
                         convCurrency={convCurrency}
                         stopsAmount={stopsAmount}
                         timeConvert={timeConvert}
                         fromToTime={fromToTime}
                         segments={item.segments}
-                        stops={info.stops}
+                        // stops={info.stops}
                         filter={filter}
                         price={item.price}
                     />
                 </div>
-                )
             ))
             : <h1>NO DATA</h1>
         }

@@ -11,9 +11,9 @@ const checkboxOptions = [
 ]
 
 const TransfersCardContainer = () => {
-    
+
     const [options, setOptions] = useState(checkboxOptions);
-    
+
     const toggleCheckbox = (option) => {
         const updatedOptions = options.map(item => {
             if (item.id === option.id) {
@@ -25,13 +25,11 @@ const TransfersCardContainer = () => {
     }
 
     return (
-        <div>
         <TransfersCard
             initialValues={checkboxOptions}
             checkboxOptions={options}
             toggleCheckbox={toggleCheckbox}
-            />
-            </div>
+        />
     )
 }
 

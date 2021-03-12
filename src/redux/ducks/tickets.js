@@ -22,12 +22,11 @@ export default function mainReducer(state = initialState, action) {
     }
 }
 
-// function filterData(data,filter) {
-//     const a = data.map(item => item.segments.map(info => (
-//         info.stops.length === filter ? info : null
-//     )))
-//     put(filterDataAction(a));
-// }
+function filterData(data, filter) {
+    const filteredData = [];
+    data.map(item => item.segments.map(info => info.stops.length === filter ? filteredData.push(item) : null));
+    return filteredData;
+}
 
 export function filterDataAction(data) {
     return { type: FILTER_DATA, data };
@@ -55,8 +54,8 @@ export function* fetchTicketsAsync() {
         const data = yield call(() => fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${id.searchId}`)
             .then(data => data.json())
             .then(response => response.tickets));
-        yield put(successRequestAction(data));
-        // yield put(filterData(data, 2));
+        const filteredData = yield filterData(data, 2);
+        yield put(filterDataAction(filteredData));
     } catch (error) {
         yield put(failRequestAction(error));
     }

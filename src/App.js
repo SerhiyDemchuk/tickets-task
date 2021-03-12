@@ -11,7 +11,7 @@ const App = () =>
     <Wrapper>
         <Container>
             <Row>
-                <Col sm={7} md={5} lg={4} xl={4}>
+                <Col sm={6} md={5} lg={4} xl={4}>
                     <TransfersCardContainer />
                 </Col>
                 <Col sm={5} md={6} lg={8} xl={8}>

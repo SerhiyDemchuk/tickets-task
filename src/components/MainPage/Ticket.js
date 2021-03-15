@@ -5,7 +5,6 @@ import Info from './Info';
 
 import { Styles, Title } from '../../styled/MainPage/MainPageStyles';
 
-
 const Ticket = ({ convCurrency, stopsAmount, timeConvert, fromToTime, price, segments = [] }) =>
     <Styles>
         <Card>

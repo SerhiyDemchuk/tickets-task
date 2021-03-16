@@ -35,13 +35,4 @@ export const LeftSide = styled.div`
   height: 258px;
   padding: 0;
 },
-.card {
-  @media(max-width: 768px) {
-    width: 250px;
-    margin-bottom: 10px;
-  },
-  @media(max-width: 576px) {
-    width: 250px;
-  }
-}
 `;

@@ -5,7 +5,14 @@ import Info from './Info';
 
 import { Styles, Title } from '../../styled/MainPage/MainPageStyles';
 
-const Ticket = ({ displayPrice, displayStopsAmount, displayInTransitTime, displayDestinationTime, price, segments = [] }) => (
+const Ticket = ({
+    price,
+    segments = [],
+    displayPrice,
+    displayStopsAmount,
+    displayTransitTime,
+    displayDestinationTime
+}) => (
     <Styles>
         <Card>
             <Card.Body>
@@ -28,14 +35,14 @@ const Ticket = ({ displayPrice, displayStopsAmount, displayInTransitTime, displa
                     segments.map((item, index) => (
                         <div key={index}>
                             <Info
-                                displayStopsAmount={displayStopsAmount}
-                                displayInTransitTime={displayInTransitTime}
-                                displayDestinationTime={displayDestinationTime}
-                                origin={item.origin}
-                                destination={item.destination}
                                 date={item.date}
-                                duration={item.duration}
                                 stops={item.stops}
+                                origin={item.origin}
+                                duration={item.duration}
+                                destination={item.destination}
+                                displayStopsAmount={displayStopsAmount}
+                                displayTransitTime={displayTransitTime}
+                                displayDestinationTime={displayDestinationTime}
                             />
                         </div>
                     ))

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 import { asyncFilterByStopsAction } from '../../redux/ducks/tickets';
 
@@ -14,6 +15,8 @@ const checkboxOptions = [
 ]
 
 const TransfersCardContainer = () => {
+
+    const history = useHistory();
 
     const [options, setOptions] = useState(checkboxOptions);
     const dispatch = useDispatch();
@@ -30,10 +33,11 @@ const TransfersCardContainer = () => {
 
     return (
         <TransfersCard
-            initialValues={checkboxOptions}
-            checkboxOptions={options}
-            toggleCheckbox={toggleCheckbox}
+            history={history}
             dispatch={dispatch}
+            checkboxOptions={options}
+            initialValues={checkboxOptions}
+            toggleCheckbox={toggleCheckbox}
             asyncFilterByStopsAction={asyncFilterByStopsAction}
         />
     )

@@ -12,7 +12,7 @@ export const displayPrice = (currency) => {
     }) + ' Р';
 }
 
-export const displayInTransitTime = (time) => {
+export const displayTransitTime = (time) => {
     const hours = (time / 60);
     const rhours = Math.floor(hours);
     const minutes = (hours - rhours) * 60;

@@ -4,19 +4,20 @@ import Ticket from './Ticket';
 import Buttons from './Buttons';
 
 const MainPage = ({
-    displayStopsAmount,
-    asyncSortByPriceAction,
-    asyncSortBySpeedAction,
-    error,
+    data,
     dispatch,
+    error,
     displayPrice,
-    displayInTransitTime,
+    displayStopsAmount,
+    displayTransitTime,
     displayDestinationTime,
-    data }) => (
+    asyncSortByPriceAction,
+    asyncSortBySpeedAction
+}) => (
     <div>
         <Buttons
-            dispatch={dispatch}
             data={data}
+            dispatch={dispatch}
             asyncSortByPriceAction={asyncSortByPriceAction}
             asyncSortBySpeedAction={asyncSortBySpeedAction}
         />
@@ -24,12 +25,12 @@ const MainPage = ({
             ? data.map((item, index) => (
                 <div key={index}>
                     <Ticket
+                        price={item.price}
+                        segments={item.segments}
                         displayPrice={displayPrice}
                         displayStopsAmount={displayStopsAmount}
-                        displayInTransitTime={displayInTransitTime}
+                        displayTransitTime={displayTransitTime}
                         displayDestinationTime={displayDestinationTime}
-                        segments={item.segments}
-                        price={item.price}
                     />
                 </div>
             ))

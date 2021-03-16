@@ -3,7 +3,7 @@ import ToggleButtonGroup from 'react-bootstrap/esm/ToggleButtonGroup';
 
 import { Button } from '../../styled/MainPage/MainPageStyles';
 
-const Buttons = ({ asyncSortByPriceAction, asyncSortBySpeedAction, dispatch, data }) => {
+const Buttons = ({ data, dispatch, asyncSortByPriceAction, asyncSortBySpeedAction }) => {
     return (
     <Button>
         <ToggleButtonGroup type="checkbox">

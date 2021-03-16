@@ -3,9 +3,13 @@ import { Field } from 'formik';
 
 import { Item, Label, Styles, Text } from '../../styled/TransfersCard/TransfersCardStyles';
 
-const Checkbox = ({ asyncFilterByStopsAction, dispatch, toggleCheckbox, label, name, options, ...props }) => (
+const Checkbox = ({ toggleCheckbox, label, name, options }) => (
   <Styles>
     <Label>{label}</Label>
+    {/* <label>
+      <Field type="checkbox" name="name"></Field>
+      <NavLink to="hello">navlink to</NavLink>
+    </label> */}
     <Field name={name}>
       {({ field }) => {
         return options.map(option => {

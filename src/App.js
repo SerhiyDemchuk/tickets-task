@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Col, Row, Container } from 'react-bootstrap/esm';
 
-import { MainPageContainer, TransfersCardContainer } from './components';
 import { Wrapper } from './styled/Styles';
+import { MainPageContainer, TransfersCardContainer } from './components';
 
 const App = () => (
     <Wrapper>

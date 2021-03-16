@@ -1,37 +1,45 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import MainPage from './MainPage';
 
-import { convCurrency, fromToTime, timeConvert } from '../../utils/MainPage';
+import {
+    displayPrice,
+    displayDestinationTime,
+    displayInTransitTime,
+    displayStopsAmount
+} from '../../utils/MainPage';
+
+import {
+    asyncSortByPriceAction,
+    asyncSortBySpeedAction,
+    asyncSendRequestAction
+} from '../../redux/ducks/tickets';
 
 const MainPageContainer = () => {
+    const params = useParams();
+    const { filter } = params;
 
     const dispatch = useDispatch();
-    const data = useSelector(state => state.data);
-
-    const stopsAmount = (stops) => {
-        if (stops.length === 0) {
-            return 'Без пересадок';
-        } else if (stops.length === 1) {
-            return '1 пересадка'
-        } else if (stops.length > 1) {
-            return `${stops.length} пересадки`
-        }
-    }
+    const { data, error } = useSelector(state => state);
 
     useEffect(() => {
-        dispatch({ type: 'tickets-task/tickets/SEND_REQUEST' });
-    }, [dispatch]);
+        dispatch(asyncSendRequestAction(filter));
+    }, [dispatch, filter]);
 
     return (
         <div>
             <MainPage
-                convCurrency={convCurrency}
-                stopsAmount={stopsAmount}
-                timeConvert={timeConvert}
-                fromToTime={fromToTime}
+                displayPrice={displayPrice}
+                displayStopsAmount={displayStopsAmount}
+                displayInTransitTime={displayInTransitTime}
+                displayDestinationTime={displayDestinationTime}
                 data={data}
+                dispatch={dispatch}
+                error={error}
+                asyncSortByPriceAction={asyncSortByPriceAction}
+                asyncSortBySpeedAction={asyncSortBySpeedAction}
             />
         </div>
     )

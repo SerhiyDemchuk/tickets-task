@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import Checkbox from "./Checkbox";
 import { LeftSide } from '../../styled/TransfersCard/TransfersCardStyles';
 
-const TransfersCard = ({ toggleCheckbox, initialValues, checkboxOptions }) =>
+const TransfersCard = ({ dispatch, asyncFilterByStopsAction, toggleCheckbox, initialValues, checkboxOptions }) => (
     <LeftSide>
         <Card>
             <Card.Body>
@@ -17,6 +17,8 @@ const TransfersCard = ({ toggleCheckbox, initialValues, checkboxOptions }) =>
                                 name="checkboxOptions"
                                 options={checkboxOptions}
                                 toggleCheckbox={toggleCheckbox}
+                                dispatch={dispatch}
+                                asyncFilterByStopsAction={asyncFilterByStopsAction}
                             />
                         </Form>
                     )}
@@ -24,5 +26,6 @@ const TransfersCard = ({ toggleCheckbox, initialValues, checkboxOptions }) =>
             </Card.Body>
         </Card>
     </LeftSide>
+)
 
 export default TransfersCard;

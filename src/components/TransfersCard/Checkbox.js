@@ -3,7 +3,7 @@ import { Field } from 'formik';
 
 import { Item, Label, Styles, Text } from '../../styled/TransfersCard/TransfersCardStyles';
 
-const Checkbox = ({ toggleCheckbox, label, name, options }) =>
+const Checkbox = ({ asyncFilterByStopsAction, dispatch, toggleCheckbox, label, name, options, ...props }) => (
   <Styles>
     <Label>{label}</Label>
     <Field name={name}>
@@ -12,13 +12,15 @@ const Checkbox = ({ toggleCheckbox, label, name, options }) =>
           return (
             <Item key={option.id} to={option.path}
               onClick={() => toggleCheckbox(option)}>
-              <input
-                type="checkbox"
-                id={option.id}
-                {...field}
-                value={option.value}
-                checked={option.checked}
-              />
+              <label htmlFor={option.id}>
+                <input
+                  type="checkbox"
+                  id={option.id}
+                  {...field}
+                  value={option.value}
+                  checked={option.checked}
+                />
+              </label>
               <Text htmlFor={option.key}>{option.value}</Text>
             </Item>
           )
@@ -26,5 +28,6 @@ const Checkbox = ({ toggleCheckbox, label, name, options }) =>
       }}
     </Field>
   </Styles>
-  
+)
+
 export default Checkbox;

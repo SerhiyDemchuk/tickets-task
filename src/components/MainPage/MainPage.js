@@ -3,24 +3,39 @@ import React from 'react';
 import Ticket from './Ticket';
 import Buttons from './Buttons';
 
-const MainPage = ({ convCurrency, stopsAmount, timeConvert, fromToTime, data }) =>
+const MainPage = ({
+    displayStopsAmount,
+    asyncSortByPriceAction,
+    asyncSortBySpeedAction,
+    error,
+    dispatch,
+    displayPrice,
+    displayInTransitTime,
+    displayDestinationTime,
+    data }) => (
     <div>
-        <Buttons />
+        <Buttons
+            dispatch={dispatch}
+            data={data}
+            asyncSortByPriceAction={asyncSortByPriceAction}
+            asyncSortBySpeedAction={asyncSortBySpeedAction}
+        />
         {data
             ? data.map((item, index) => (
                 <div key={index}>
                     <Ticket
-                        convCurrency={convCurrency}
-                        stopsAmount={stopsAmount}
-                        timeConvert={timeConvert}
-                        fromToTime={fromToTime}
+                        displayPrice={displayPrice}
+                        displayStopsAmount={displayStopsAmount}
+                        displayInTransitTime={displayInTransitTime}
+                        displayDestinationTime={displayDestinationTime}
                         segments={item.segments}
                         price={item.price}
                     />
                 </div>
             ))
-            : <h1>NO DATA</h1>
+            : <h1>{error}</h1>
         }
     </div>
+)
 
 export default MainPage;

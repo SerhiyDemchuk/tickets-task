@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 
 import MainPage from './MainPage';
 
 import {
     displayPrice,
-    displayStopsAmount,
     displayTransitTime,
+    displayStopsAmount,
     displayDestinationTime
 } from '../../utils/MainPage';
-
 import {
     asyncSortByPriceAction,
     asyncSortBySpeedAction,
@@ -18,15 +17,13 @@ import {
 } from '../../redux/ducks/tickets';
 
 const MainPageContainer = () => {
-    const history = useHistory();
-    console.log(history);
 
+    const history = useHistory();
     const params = useParams();
     const { filter } = params;
 
-    
     const dispatch = useDispatch();
-    const { data, error } = useSelector(state => state);
+    const { isLoaded, data, error } = useSelector(state => state);
     
     useEffect(() => {
         dispatch(asyncSendRequestAction(filter));
@@ -37,6 +34,7 @@ const MainPageContainer = () => {
             <MainPage
                 data={data}
                 error={error}
+                isLoaded={isLoaded}
                 dispatch={dispatch}
                 displayPrice={displayPrice}
                 displayStopsAmount={displayStopsAmount}

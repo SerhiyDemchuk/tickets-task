@@ -1,37 +1,36 @@
 import React from 'react';
-import { Field } from 'formik';
+import { FieldArray } from 'formik';
 
-import { Item, Label, Styles, Text } from '../../styled/TransfersCard/TransfersCardStyles';
+import {
+  StyledText,
+  StyledField
+} from '../../styled/TransfersCard/TransfersCardStyles';
 
-const Checkbox = ({ toggleCheckbox, label, name, options }) => (
-  <Styles>
-    <Label>{label}</Label>
-    {/* <label>
-      <Field type="checkbox" name="name"></Field>
-      <NavLink to="hello">navlink to</NavLink>
-    </label> */}
-    <Field name={name}>
-      {({ field }) => {
-        return options.map(option => {
-          return (
-            <Item key={option.id} to={option.path}
-              onClick={() => toggleCheckbox(option)}>
-              <label htmlFor={option.id}>
-                <input
-                  type="checkbox"
-                  id={option.id}
-                  {...field}
-                  value={option.value}
-                  checked={option.checked}
-                />
-              </label>
-              <Text htmlFor={option.key}>{option.value}</Text>
-            </Item>
-          )
-        })
-      }}
-    </Field>
-  </Styles>
+const Checkbox = ({ toggleCheckbox, name, options }) => (
+  <FieldArray
+    render={array => (
+      <div>
+        {options.map(item => (
+          <div
+            key={item.id}
+            onChange={() => toggleCheckbox(item)}
+          >
+            <StyledText
+              className="form-check-label"
+            >
+              <StyledField
+                name={name}
+                type="checkbox"
+                value={item.value}
+                checked={item.checked}
+              />
+              {item.value}
+            </StyledText>
+          </div>
+        ))}
+      </div>
+    )}
+  />
 )
 
 export default Checkbox;

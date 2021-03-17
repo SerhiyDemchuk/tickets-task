@@ -3,12 +3,13 @@ import { Card, Col, Row } from 'react-bootstrap/esm';
 
 import Info from './Info';
 
-import { Styles, Title } from '../../styled/MainPage/MainPageStyles';
+import { Styles } from '../../styled/Styles';
+import { Title } from '../../styled/MainPage/MainPageStyles';
 
 const Ticket = ({
     price,
-    segments = [],
     displayPrice,
+    segments = [],
     displayStopsAmount,
     displayTransitTime,
     displayDestinationTime

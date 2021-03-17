@@ -1,3 +1,4 @@
+import React from 'react';
 import { Row, Col } from 'react-bootstrap/esm';
 
 import { LowerColText, UpperColText } from '../../styled/MainPage/MainPageStyles';

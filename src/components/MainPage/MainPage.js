@@ -5,8 +5,8 @@ import Buttons from './Buttons';
 
 const MainPage = ({
     data,
-    dispatch,
     error,
+    dispatch,
     displayPrice,
     displayStopsAmount,
     displayTransitTime,

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-
-import { asyncFilterByStopsAction } from '../../redux/ducks/tickets';
+import { useHistory } from 'react-router-dom';
 
 import TransfersCard from './TransfersCard';
 
@@ -17,7 +15,6 @@ const checkboxOptions = [
 const TransfersCardContainer = () => {
 
     const history = useHistory();
-
     const [options, setOptions] = useState(checkboxOptions);
     const dispatch = useDispatch();
 
@@ -25,6 +22,10 @@ const TransfersCardContainer = () => {
         const updatedOptions = options.map(item => {
             if (item.id === option.id) {
                 item.checked = !item.checked;
+                history.push(item.path);
+            }
+            if (item.checked && option.id !== item.id) {
+                item.checked = false;
             }
             return item;
         });
@@ -38,7 +39,6 @@ const TransfersCardContainer = () => {
             checkboxOptions={options}
             initialValues={checkboxOptions}
             toggleCheckbox={toggleCheckbox}
-            asyncFilterByStopsAction={asyncFilterByStopsAction}
         />
     )
 }

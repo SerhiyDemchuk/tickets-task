@@ -3,7 +3,8 @@ import { FieldArray } from 'formik';
 
 import {
   StyledText,
-  StyledField
+  StyledField,
+  Styled
 } from '../../styled/TransfersCard/TransfersCardStyles';
 
 const Checkbox = ({ toggleCheckbox, name, options }) => (
@@ -11,7 +12,7 @@ const Checkbox = ({ toggleCheckbox, name, options }) => (
     render={array => (
       <div>
         {options.map(item => (
-          <div
+          <Styled
             key={item.id}
             onChange={() => toggleCheckbox(item)}
           >
@@ -26,7 +27,7 @@ const Checkbox = ({ toggleCheckbox, name, options }) => (
               />
               {item.value}
             </StyledText>
-          </div>
+          </Styled>
         ))}
       </div>
     )}

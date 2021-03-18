@@ -1,3 +1,22 @@
+export function filterData(data, filter) {
+    let length;
+
+    if (filter === 'no_stops') length = 0;
+    if (filter === 'one_stop') length = 1;
+    if (filter === 'two_stops') length = 2;
+    if (filter === 'three_stops') length = 3;
+
+    const filteredData = [];
+
+    data.map(item => item.segments.map(info =>
+        info.stops.length === length || filter === undefined
+            ? filteredData.push(item)
+            : null
+    ));
+
+    return filteredData;
+}
+
 export const displayDestinationTime = (time) => {
     const convertedTime = new Date(time);
     const hours = (convertedTime.getHours() < 10 ? '0' : '') + convertedTime.getHours();

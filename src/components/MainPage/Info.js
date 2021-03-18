@@ -1,7 +1,6 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap/esm';
 
-import { LowerColText, UpperColText } from '../../styled/MainPage/MainPageStyles';
+import { StyledLowerCol, StyledUpperCol, StyledRow } from '../../styled/Styles';
 
 const Info = ({
   date,
@@ -13,15 +12,15 @@ const Info = ({
   displayStopsAmount,
   displayDestinationTime
 }) => (
-  <Row>
-    <Col xs={4} sm={4} md={3} lg={4} xl={4}><UpperColText>{origin} - {destination}</UpperColText></Col>
-    <Col xs={3} sm={4} md={4} lg={4} xl={3}><UpperColText>В ПУТИ</UpperColText></Col>
-    <Col xs={3} sm={3} md={3} lg={3} xl={3}><UpperColText>{displayStopsAmount(stops)}</UpperColText></Col>
+  <StyledRow>
+    <StyledUpperCol xs={3} sm={4} md={4} lg={4} xl={4}>{origin} - {destination}</StyledUpperCol>
+    <StyledUpperCol xs={4} sm={4} md={4} lg={4} xl={4}>В ПУТИ</StyledUpperCol>
+    <StyledUpperCol xs={5} sm={3} md={3} lg={3} xl={3}>{displayStopsAmount(stops)}</StyledUpperCol>
 
-    <Col xs={4} sm={4} md={3} lg={4} xl={4}><LowerColText>{displayDestinationTime(date)}</LowerColText></Col>
-    <Col xs={3} sm={4} md={4} lg={4} xl={3}><LowerColText>{displayTransitTime(duration)}</LowerColText></Col>
-    <Col xs={3} sm={3} md={3} lg={3} xl={3}><LowerColText>{stops.join(', ')}</LowerColText></Col>
-  </Row>
+    <StyledLowerCol xs={3} sm={4} md={4} lg={4} xl={4}>{displayDestinationTime(date)}</StyledLowerCol>
+    <StyledLowerCol xs={4} sm={4} md={4} lg={4} xl={4}>{displayTransitTime(duration)}</StyledLowerCol>
+    <StyledLowerCol xs={5} sm={3} md={3} lg={4} xl={4}>{stops.join(', ')}</StyledLowerCol>
+  </StyledRow>
 )
 
 export default Info;

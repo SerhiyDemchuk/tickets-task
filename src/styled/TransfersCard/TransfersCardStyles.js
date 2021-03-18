@@ -1,39 +1,47 @@
 import { Field } from 'formik';
+import { Card } from 'react-bootstrap';
 import styled from 'styled-components';
 
 export const StyledField = styled(Field)`
-  margin-right: 20px;
+  margin: 0 20px;
   transform: scale(2);
 `;
 
+export const Styled = styled.div`
+display: flex;
+align-items: center;  
+justify-content: flex-start;
+padding: 8px;
+cursor: pointer;
+: hover {
+  background-color: #F1FCFF;
+}
+
+`;
+
 export const StyledText = styled.label`
-  display: flex;
-  justify-content: flex-start;
-  text-decoration: none;
-  align-items: center;
   cursor: pointer;
-  font-size: 16px;
   font-weight: 500;
   color: #777777;
-  padding: 8px 40px 8px 20px;
-  : hover {
-    background-color: #F1FCFF;
-  }
-  @media(max-width: 992px) {
-    padding: 6px 40px 6px 20px;
-  }
+
+  // @media(max-width: 992px) {
+  //   padding: 6px 40px 6px 20px;
+  // }
 `;
 
 export const Label = styled.div`
-  padding: 15px 0 10px 20px;
+  margin: 20px 20px 10px;
+  color: #777777;
   font-size: 13px;
   font-weight: 700;
-  color: #777777;
 `;
 
-export const LeftSide = styled.div`
-.card-body {
+export const StyledCard = styled(Card)`
   height: 258px;
-  padding: 0;
-},
+  width: 100%;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  .card-body {
+    padding: 0;
+  }
 `;

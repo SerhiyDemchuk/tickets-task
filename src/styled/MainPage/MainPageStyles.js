@@ -1,54 +1,61 @@
+import { Card, Col, ToggleButtonGroup } from 'react-bootstrap';
 import styled from 'styled-components';
 
-export const UpperColText = styled.div`
-  color: #ACBAC2;
-  margin-top: 15px;
-  font-size: 14px;
-  font-weight: 600;
-  @media (max-width: 992px) {
-    font-size: 11px;
-  },
-  @media (max-width: 768px) {
-    margin: 0;
-    font-size: 6px;
+export const StyledCard = styled(Card)`
+  margin-top: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  .row {
+    padding: 15px 0 0 20px;
   }
 `;
 
-export const Title = styled.div`
+export const UpperCardBody = styled(Card.Body)`
+  padding: 0;
+  .card-img {
+    width: 100px;
+  }
   .card-title {
     color: #2196F3;
   }
 `;
 
-export const LowerColText = styled.div`
-  color: #4A4A4A;
-  font-size: 15px;
-  font-weight: 500;
-  @media(max-width: 992px) {
-    font-size: 13px;
+export const LowerCardBody = styled(Card.Body)`
+  .row {
+    padding: 8px 0 0;
   }
 `;
 
-export const Button = styled.div`
+export const UpperCol = styled(Col)`
+  color: #ACBAC2;
+  font-size: 14px;
+  font-weight: 600;
+`;
+
+export const LowerCol = styled(Col)`
+  color: #4A4A4A;
+  font-size: 15px;
+  font-weight: 500;
+`;
+
+export const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+.btn {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 #button_1 {
-    background-color: #2196F3;
-    font-size: 15px;
-    font-weight: 600;
+  background-color: #2196F3;
 },
 #button_2 {
-    background-color: #fff;
-    border: #fff;
-    color: black;
-    font-size: 15px;
-    font-weight: 600;
+  border: #fff;
+  color: black;
+  background-color: #fff;
 },
-.btn-group-toggle {
-  width: 100%;
-  @media(width: 992px) {
-    width: 50%;
-  };
-  @media(max-width: 768px) {
-    width: 250px;
-  };
-}
 `;

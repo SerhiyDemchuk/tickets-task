@@ -1,4 +1,5 @@
 import { put, takeEvery, call, all } from 'redux-saga/effects';
+import { filterData } from '../../utils/MainPage';
 
 const SORT_DATA = 'tickets-task/tickets/SORT_DATA';
 const FILTER_DATA = 'tickets-task/tickets/FILTER_DATA';
@@ -86,25 +87,6 @@ export function* rootSaga() {
         sortBySpeed(),
         filterByStops()
     ]);
-}
-
-export function filterData(data, filter) {
-    let length;
-
-    if (filter === 'no_stops') length = 0;
-    if (filter === 'one_stop') length = 1;
-    if (filter === 'two_stops') length = 2;
-    if (filter === 'three_stops') length = 3;
-
-    const filteredData = [];
-
-    data.map(item => item.segments.map(info =>
-        info.stops.length === length || filter === undefined
-            ? filteredData.push(item)
-            : null
-    ));
-
-    return filteredData;
 }
 
 export function* onSortByPrice(data) {

@@ -14,13 +14,14 @@ const MainPage = ({
     asyncSortByPriceAction,
     asyncSortBySpeedAction
 }) => (
-    <div>
+    <>
         <Buttons
             data={data}
             dispatch={dispatch}
             asyncSortByPriceAction={asyncSortByPriceAction}
             asyncSortBySpeedAction={asyncSortBySpeedAction}
-        />
+            />
+
         {data
             ? data.map((item, index) => (
                 <div key={index}>
@@ -31,12 +32,12 @@ const MainPage = ({
                         displayStopsAmount={displayStopsAmount}
                         displayTransitTime={displayTransitTime}
                         displayDestinationTime={displayDestinationTime}
-                    />
+                        />
                 </div>
             ))
             : <h1>{error}</h1>
         }
-    </div>
+    </>
 )
 
 export default MainPage;

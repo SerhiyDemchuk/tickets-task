@@ -4,27 +4,25 @@ import Card from 'react-bootstrap/esm/Card';
 
 import Checkbox from './Checkbox';
 
-import { Label, LeftSide } from '../../styled/TransfersCard/TransfersCardStyles';
+import { Label, StyledCard } from '../../styled/TransfersCard/TransfersCardStyles';
 
 const TransfersCard = ({ toggleCheckbox, initialValues, checkboxOptions }) => (
-    <LeftSide>
-        <Card>
-            <Card.Body>
-                <Formik initialValues={initialValues}>
-                    {formik => (
-                        <Form>
-                            <Label>КОЛИЧЕСТВО ПЕРЕСАДОК</Label>
-                            <Checkbox
-                                name="checkboxOptions"
-                                options={checkboxOptions}
-                                toggleCheckbox={toggleCheckbox}
-                            />
-                        </Form>
-                    )}
-                </Formik>
-            </Card.Body>
-        </Card>
-    </LeftSide>
+    <StyledCard>
+        <Card.Body>
+            <Formik initialValues={initialValues}>
+                {formik => (
+                    <Form>
+                        <Label>КОЛИЧЕСТВО ПЕРЕСАДОК</Label>
+                        <Checkbox
+                            name="checkboxOptions"
+                            options={checkboxOptions}
+                            toggleCheckbox={toggleCheckbox}
+                        />
+                    </Form>
+                )}
+            </Formik>
+        </Card.Body>
+    </StyledCard>
 )
 
 export default TransfersCard;

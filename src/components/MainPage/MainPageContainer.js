@@ -24,26 +24,24 @@ const MainPageContainer = () => {
 
     const dispatch = useDispatch();
     const { isLoaded, data, error } = useSelector(state => state);
-    
+
     useEffect(() => {
         dispatch(asyncSendRequestAction(filter));
     }, [dispatch, filter, history]);
 
     return (
-        <div>
-            <MainPage
-                data={data}
-                error={error}
-                isLoaded={isLoaded}
-                dispatch={dispatch}
-                displayPrice={displayPrice}
-                displayStopsAmount={displayStopsAmount}
-                displayTransitTime={displayTransitTime}
-                displayDestinationTime={displayDestinationTime}
-                asyncSortByPriceAction={asyncSortByPriceAction}
-                asyncSortBySpeedAction={asyncSortBySpeedAction}
-            />
-        </div>
+        <MainPage
+            data={data}
+            error={error}
+            isLoaded={isLoaded}
+            dispatch={dispatch}
+            displayPrice={displayPrice}
+            displayStopsAmount={displayStopsAmount}
+            displayTransitTime={displayTransitTime}
+            displayDestinationTime={displayDestinationTime}
+            asyncSortByPriceAction={asyncSortByPriceAction}
+            asyncSortBySpeedAction={asyncSortBySpeedAction}
+        />
     )
 }
 

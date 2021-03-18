@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Col, Row, Container } from 'react-bootstrap/esm';
 
-import { MainPageContainer, TransfersCardContainer } from './components';
 import { Wrapper } from './styled/Styles';
+import { MainPageContainer, TransfersCardContainer } from './components';
 
-const App = () =>
+const App = () => (
     <Wrapper>
         <Container>
             <Row>
@@ -14,7 +14,7 @@ const App = () =>
                 </Col>
                 <Col sm={5} md={6} lg={8} xl={8}>
                     <Switch>
-                        <Route path="/:filter?"
+                        <Route exact path="/:filter?"
                             component={MainPageContainer}
                         />
                     </Switch>
@@ -22,5 +22,6 @@ const App = () =>
             </Row>
         </Container>
     </Wrapper>
+)
 
 export default App;

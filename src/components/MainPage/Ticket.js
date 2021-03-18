@@ -3,16 +3,24 @@ import { Card, Col, Row } from 'react-bootstrap/esm';
 
 import Info from './Info';
 
-import { Styles, Title } from '../../styled/MainPage/MainPageStyles';
+import { Styles } from '../../styled/Styles';
+import { Title } from '../../styled/MainPage/MainPageStyles';
 
-const Ticket = ({ convCurrency, stopsAmount, timeConvert, fromToTime, price, segments = [] }) =>
+const Ticket = ({
+    price,
+    displayPrice,
+    segments = [],
+    displayStopsAmount,
+    displayTransitTime,
+    displayDestinationTime
+}) => (
     <Styles>
         <Card>
             <Card.Body>
                 <Row>
                     <Col xs={4} sm={5} md={5} lg={8} xl={7}>
                         <Title>
-                            <Card.Title>{convCurrency(price)}</Card.Title>
+                            <Card.Title>{displayPrice(price)}</Card.Title>
                         </Title>
                     </Col>
                     <Col xs={5} sm={5} md={5} lg={4} xl={4}>
@@ -28,14 +36,14 @@ const Ticket = ({ convCurrency, stopsAmount, timeConvert, fromToTime, price, seg
                     segments.map((item, index) => (
                         <div key={index}>
                             <Info
-                                stopsAmount={stopsAmount}
-                                timeConvert={timeConvert}
-                                fromToTime={fromToTime}
-                                origin={item.origin}
-                                destination={item.destination}
                                 date={item.date}
-                                duration={item.duration}
                                 stops={item.stops}
+                                origin={item.origin}
+                                duration={item.duration}
+                                destination={item.destination}
+                                displayStopsAmount={displayStopsAmount}
+                                displayTransitTime={displayTransitTime}
+                                displayDestinationTime={displayDestinationTime}
                             />
                         </div>
                     ))
@@ -43,5 +51,6 @@ const Ticket = ({ convCurrency, stopsAmount, timeConvert, fromToTime, price, seg
             </Card.Body>
         </Card>
     </Styles>
+)
 
 export default Ticket;

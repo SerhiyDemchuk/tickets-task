@@ -1,37 +1,47 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 
 import MainPage from './MainPage';
 
-import { convCurrency, fromToTime, timeConvert } from '../../utils/MainPage';
+import {
+    displayPrice,
+    displayTransitTime,
+    displayStopsAmount,
+    displayDestinationTime
+} from '../../utils/MainPage';
+import {
+    asyncSortByPriceAction,
+    asyncSortBySpeedAction,
+    asyncSendRequestAction
+} from '../../redux/ducks/tickets';
 
 const MainPageContainer = () => {
 
+    const history = useHistory();
+    const params = useParams();
+    const { filter } = params;
+
     const dispatch = useDispatch();
-    const data = useSelector(state => state.data);
-
-    const stopsAmount = (stops) => {
-        if (stops.length === 0) {
-            return 'Без пересадок';
-        } else if (stops.length === 1) {
-            return '1 пересадка'
-        } else if (stops.length > 1) {
-            return `${stops.length} пересадки`
-        }
-    }
-
+    const { isLoaded, data, error } = useSelector(state => state);
+    
     useEffect(() => {
-        dispatch({ type: 'tickets-task/tickets/SEND_REQUEST' });
-    }, [dispatch]);
+        dispatch(asyncSendRequestAction(filter));
+    }, [dispatch, filter, history]);
 
     return (
         <div>
             <MainPage
-                convCurrency={convCurrency}
-                stopsAmount={stopsAmount}
-                timeConvert={timeConvert}
-                fromToTime={fromToTime}
                 data={data}
+                error={error}
+                isLoaded={isLoaded}
+                dispatch={dispatch}
+                displayPrice={displayPrice}
+                displayStopsAmount={displayStopsAmount}
+                displayTransitTime={displayTransitTime}
+                displayDestinationTime={displayDestinationTime}
+                asyncSortByPriceAction={asyncSortByPriceAction}
+                asyncSortBySpeedAction={asyncSortBySpeedAction}
             />
         </div>
     )

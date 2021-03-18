@@ -1,25 +1,26 @@
-import { NavLink } from 'react-router-dom';
+import { Field } from 'formik';
 import styled from 'styled-components';
 
-export const Styles = styled.div`
-  display: flex;
-  flex-direction: column;
+export const StyledField = styled(Field)`
+  margin-right: 20px;
+  transform: scale(2);
 `;
 
-export const Text = styled.label`
+export const StyledText = styled.label`
+  display: flex;
+  justify-content: flex-start;
   text-decoration: none;
-  margin-left: 8px;
+  align-items: center;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
   color: #777777;
-`;
-
-export const Item = styled(NavLink)`
-  cursor: pointer;
-  padding: 5px 20px 5px 20px;
+  padding: 8px 40px 8px 20px;
   : hover {
     background-color: #F1FCFF;
+  }
+  @media(max-width: 992px) {
+    padding: 6px 40px 6px 20px;
   }
 `;
 
@@ -35,13 +36,4 @@ export const LeftSide = styled.div`
   height: 258px;
   padding: 0;
 },
-.card {
-  @media(max-width: 768px) {
-    width: 250px;
-    margin-bottom: 10px;
-  },
-  @media(max-width: 576px) {
-    width: 250px;
-  }
-}
 `;

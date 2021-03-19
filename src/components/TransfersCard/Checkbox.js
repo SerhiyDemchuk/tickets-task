@@ -2,9 +2,9 @@ import React from 'react';
 import { FieldArray } from 'formik';
 
 import {
-  StyledText,
-  StyledField,
-  Styled
+  CheckboxDiv,
+  CheckboxText,
+  CheckboxField
 } from '../../styled/TransfersCard/TransfersCardStyles';
 
 const Checkbox = ({ toggleCheckbox, name, options }) => (
@@ -12,22 +12,22 @@ const Checkbox = ({ toggleCheckbox, name, options }) => (
     render={array => (
       <div>
         {options.map(item => (
-          <Styled
+          <CheckboxDiv
             key={item.id}
             onChange={() => toggleCheckbox(item)}
           >
-            <StyledText
+            <CheckboxText
               className="form-check-label"
             >
-              <StyledField
+              <CheckboxField
                 name={name}
                 type="checkbox"
                 value={item.value}
                 checked={item.checked}
               />
               {item.value}
-            </StyledText>
-          </Styled>
+            </CheckboxText>
+          </CheckboxDiv>
         ))}
       </div>
     )}

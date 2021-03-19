@@ -9,10 +9,10 @@ const App = () => (
     <Wrapper>
         <Container>
             <Row>
-                <Col sm={6} md={5} lg={4} xl={4}>
+                <Col sm={4} md={4} lg={4} xl={3}>
                     <TransfersCardContainer />
                 </Col>
-                <Col sm={5} md={6} lg={8} xl={8}>
+                <Col sm={8} md={8} lg={8} xl={9}>
                     <Switch>
                         <Route exact path="/:filter?"
                             component={MainPageContainer}

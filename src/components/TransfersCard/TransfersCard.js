@@ -4,15 +4,16 @@ import Card from 'react-bootstrap/esm/Card';
 
 import Checkbox from './Checkbox';
 
-import { Label, StyledCard } from '../../styled/TransfersCard/TransfersCardStyles';
+import { StyledCheckbox } from '../../styled/Styles';
+import { TransfersLabel } from '../../styled/TransfersCard/TransfersCardStyles';
 
 const TransfersCard = ({ toggleCheckbox, initialValues, checkboxOptions }) => (
-    <StyledCard>
+    <StyledCheckbox>
         <Card.Body>
             <Formik initialValues={initialValues}>
                 {formik => (
                     <Form>
-                        <Label>КОЛИЧЕСТВО ПЕРЕСАДОК</Label>
+                        <TransfersLabel>КОЛИЧЕСТВО ПЕРЕСАДОК</TransfersLabel>
                         <Checkbox
                             name="checkboxOptions"
                             options={checkboxOptions}
@@ -22,7 +23,7 @@ const TransfersCard = ({ toggleCheckbox, initialValues, checkboxOptions }) => (
                 )}
             </Formik>
         </Card.Body>
-    </StyledCard>
+    </StyledCheckbox>
 )
 
 export default TransfersCard;

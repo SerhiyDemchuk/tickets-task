@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, Col } from 'react-bootstrap/esm';
-import { LowerCardBody, StyledCard, UpperCardBody } from '../../styled/MainPage/MainPageStyles';
+import { Card, Col, Row } from 'react-bootstrap/esm';
 
-import { StyledRow, StyledUpperCol } from '../../styled/Styles';
+import { StyledUpperCol } from '../../styled/Styles';
+import { LowerCardBody, TicketCard, UpperCardBody } from '../../styled/MainPage/MainPageStyles';
 
 import Info from './Info';
 
@@ -15,10 +15,10 @@ const Ticket = ({
     displayTransitTime,
     displayDestinationTime
 }) => (
-    <StyledCard>
+    <TicketCard>
         <UpperCardBody>
-            <StyledRow>
-                <StyledUpperCol xs={3} sm={5} md={5} lg={8} xl={8}>
+            <Row>
+                <StyledUpperCol xs={7} sm={5} md={7} lg={8} xl={8}>
                     <Card.Title>{displayPrice(price)}</Card.Title>
                 </StyledUpperCol>
                 <Col xs={5} sm={5} md={5} lg={4} xl={1}>
@@ -26,27 +26,25 @@ const Ticket = ({
                         src="https://bit.ly/37Y4YHu">
                     </Card.Img>
                 </Col>
-            </StyledRow>
+            </Row>
         </UpperCardBody>
-        <LowerCardBody>
-            {
-                segments.map((item, index) => (
-                    <div key={index}>
-                        <Info
-                            date={item.date}
-                            stops={item.stops}
-                            origin={item.origin}
-                            duration={item.duration}
-                            destination={item.destination}
-                            displayStopsAmount={displayStopsAmount}
-                            displayTransitTime={displayTransitTime}
-                            displayDestinationTime={displayDestinationTime}
-                        />
-                    </div>
-                ))
-            }
-        </LowerCardBody>
-    </StyledCard>
+        {
+            segments.map((item, index) => (
+                <LowerCardBody key={index}>
+                    <Info
+                        date={item.date}
+                        stops={item.stops}
+                        origin={item.origin}
+                        duration={item.duration}
+                        destination={item.destination}
+                        displayStopsAmount={displayStopsAmount}
+                        displayTransitTime={displayTransitTime}
+                        displayDestinationTime={displayDestinationTime}
+                    />
+                </LowerCardBody>
+            ))
+        }
+    </TicketCard>
 )
 
 export default Ticket;

@@ -1,28 +1,31 @@
 import { Card, Col, ToggleButtonGroup } from 'react-bootstrap';
 import styled from 'styled-components';
 
-export const StyledCard = styled(Card)`
+export const TicketCard = styled(Card)`
+  padding: 20px;
   margin-top: 20px;
+  max-width: 500px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  .row {
-    padding: 15px 0 0 20px;
-  }
+  .card-body {
+    padding: 0;
+  };
 `;
 
 export const UpperCardBody = styled(Card.Body)`
-  padding: 0;
+  margin-bottom: 15px;
   .card-img {
     width: 100px;
-  }
+  };
   .card-title {
     color: #2196F3;
-  }
+  };
 `;
 
 export const LowerCardBody = styled(Card.Body)`
-  .row {
-    padding: 8px 0 0;
-  }
+  margin-bottom: 15px;
+  :last-child {
+    margin-bottom: 0;
+  };
 `;
 
 export const UpperCol = styled(Col)`
@@ -41,6 +44,7 @@ export const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
   width: 100%;
   display: flex;
   align-items: baseline;
+  max-width: 500px;
 .btn {
   height: 50px;
   display: flex;
@@ -49,13 +53,13 @@ export const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 1px;
-}
+};
 #button_1 {
   background-color: #2196F3;
-},
+};
 #button_2 {
   border: #fff;
   color: black;
   background-color: #fff;
-},
+};
 `;

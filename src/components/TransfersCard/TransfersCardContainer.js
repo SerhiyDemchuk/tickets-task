@@ -23,6 +23,7 @@ const TransfersCardContainer = () => {
             if (item.id === option.id) {
                 item.checked = !item.checked;
                 history.push(item.path);
+                // localStorage.setItem()
             }
             if (item.checked && option.id !== item.id) {
                 item.checked = false;

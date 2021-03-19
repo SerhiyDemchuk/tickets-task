@@ -1,5 +1,5 @@
-import { put, takeEvery, call, all } from 'redux-saga/effects';
 import { filterData } from '../../utils/MainPage';
+import { put, takeEvery, call, all } from 'redux-saga/effects';
 
 const SORT_DATA = 'tickets-task/tickets/SORT_DATA';
 const FILTER_DATA = 'tickets-task/tickets/FILTER_DATA';
@@ -60,10 +60,6 @@ export function asyncFilterByStopsAction(data, filter) {
     return { type: FILTER_BY_STOPS_AMOUNT, data, filter };
 }
 
-export function* onSortBySpeed({ data }) {
-    yield console.log('in process');
-}
-
 export function* sortByPrice() {
     yield takeEvery(SORT_BY_PRICE, onSortByPrice);
 }
@@ -89,8 +85,16 @@ export function* rootSaga() {
     ]);
 }
 
-export function* onSortByPrice(data) {
-    const sortedByPrice = data.data.sort((a, b) => (a.price > b.price) ? 1 : -1);
+export function* onSortBySpeed({ data }) {
+    const sortedBySpeed = data.map(item => {
+        item.totalDuration = item.segments.reduce((total, {duration}) => total + duration, 0);
+       return item;
+      }).sort((a, b)  => a.totalDuration - b.totalDuration);
+    yield put(sortDataAction(sortedBySpeed));
+}
+
+export function* onSortByPrice({ data }) {
+    const sortedByPrice = data.sort((a, b) => (a.price - b.price));
     yield put(sortDataAction(sortedByPrice));
 }
 
@@ -107,7 +111,7 @@ export function* fetchTicketsAsync({ pathname }) {
             const filteredWithPath = filterData(data, pathname);
             yield put(successRequestAction(filteredWithPath));
         }
-        
+
     } catch (error) {
         yield put(failRequestAction(error));
     }

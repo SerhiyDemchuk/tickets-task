@@ -8,7 +8,6 @@ const SEND_REQUEST = 'tickets-task/tickets/SEND_REQUEST';
 const SORT_BY_PRICE = 'tickets-task/tickets/SORT_BY_PRICE';
 const SORT_BY_SPEED = 'tickets-task/tickets/SORT_BY_SPEED';
 const SUCCESSFUL_REQUEST = 'tickets-task/tickets/SUCCESSFUL_REQUEST';
-const FILTER_BY_STOPS_AMOUNT = 'tickets-task/tickets/FILTER_BY_STOPS_AMOUNT';
 
 const initialState = {
     isLoaded: false,
@@ -18,9 +17,9 @@ const initialState = {
 
 export default function mainReducer(state = initialState, action) {
     switch (action.type) {
-        case SUCCESSFUL_REQUEST:
-        case FILTER_DATA:
         case SORT_DATA:
+        case FILTER_DATA:
+        case SUCCESSFUL_REQUEST:
             return { ...state, data: action.data, isLoaded: true }
         case FAIL_REQUEST:
             return { ...state, error: 'NO DATA' }
@@ -56,10 +55,6 @@ export function asyncSendRequestAction(pathname) {
     return { type: SEND_REQUEST, pathname };
 }
 
-export function asyncFilterByStopsAction(data, filter) {
-    return { type: FILTER_BY_STOPS_AMOUNT, data, filter };
-}
-
 export function* sortByPrice() {
     yield takeEvery(SORT_BY_PRICE, onSortByPrice);
 }
@@ -72,24 +67,19 @@ export function* sendRequest() {
     yield takeEvery(SEND_REQUEST, fetchTicketsAsync);
 }
 
-export function* filterByStops() {
-    yield takeEvery(FILTER_BY_STOPS_AMOUNT, filterData);
-}
-
 export function* rootSaga() {
     yield all([
         sendRequest(),
         sortByPrice(),
-        sortBySpeed(),
-        filterByStops()
+        sortBySpeed()
     ]);
 }
 
 export function* onSortBySpeed({ data }) {
     const sortedBySpeed = data.map(item => {
-        item.totalDuration = item.segments.reduce((total, {duration}) => total + duration, 0);
-       return item;
-      }).sort((a, b)  => a.totalDuration - b.totalDuration);
+        item.totalDuration = item.segments.reduce((total, { duration }) => total + duration, 0);
+        return item;
+    }).sort((a, b) => a.totalDuration - b.totalDuration);
     yield put(sortDataAction(sortedBySpeed));
 }
 

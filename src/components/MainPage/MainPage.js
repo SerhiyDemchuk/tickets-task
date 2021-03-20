@@ -7,10 +7,9 @@ const MainPage = ({
     data,
     error,
     dispatch,
+    displayTime,
     displayPrice,
     displayStopsAmount,
-    displayTransitTime,
-    displayDestinationTime,
     asyncSortByPriceAction,
     asyncSortBySpeedAction
 }) => (
@@ -28,10 +27,9 @@ const MainPage = ({
                     <Ticket
                         price={item.price}
                         segments={item.segments}
+                        displayTime={displayTime}
                         displayPrice={displayPrice}
                         displayStopsAmount={displayStopsAmount}
-                        displayTransitTime={displayTransitTime}
-                        displayDestinationTime={displayDestinationTime}
                         />
                 </div>
             ))

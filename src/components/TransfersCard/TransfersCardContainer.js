@@ -24,10 +24,10 @@ const TransfersCardContainer = () => {
                 item.checked = !item.checked;
                 history.push(item.path);
                 // localStorage.setItem()
-            }
+            };
             if (item.checked && option.id !== item.id) {
                 item.checked = false;
-            }
+            };
             return item;
         });
         setOptions(updatedOptions);

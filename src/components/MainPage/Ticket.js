@@ -9,11 +9,10 @@ import Info from './Info';
 
 const Ticket = ({
     price,
+    displayTime,
     displayPrice,
     segments = [],
     displayStopsAmount,
-    displayTransitTime,
-    displayDestinationTime
 }) => (
     <TicketCard>
         <UpperCardBody>
@@ -38,8 +37,7 @@ const Ticket = ({
                         duration={item.duration}
                         destination={item.destination}
                         displayStopsAmount={displayStopsAmount}
-                        displayTransitTime={displayTransitTime}
-                        displayDestinationTime={displayDestinationTime}
+                        displayTime={displayTime}
                     />
                 </LowerCardBody>
             ))

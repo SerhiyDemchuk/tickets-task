@@ -5,10 +5,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import MainPage from './MainPage';
 
 import {
+    displayTime,
     displayPrice,
-    displayTransitTime,
     displayStopsAmount,
-    displayDestinationTime
 } from '../../utils/MainPage';
 import {
     asyncSortByPriceAction,
@@ -19,11 +18,10 @@ import {
 const MainPageContainer = () => {
 
     const history = useHistory();
-    const params = useParams();
-    const { filter } = params;
+    const { filter } = useParams();
 
     const dispatch = useDispatch();
-    const { isLoaded, data, error } = useSelector(state => state);
+    const { data, error } = useSelector(state => state);
 
     useEffect(() => {
         dispatch(asyncSendRequestAction(filter));
@@ -33,12 +31,10 @@ const MainPageContainer = () => {
         <MainPage
             data={data}
             error={error}
-            isLoaded={isLoaded}
             dispatch={dispatch}
+            displayTime={displayTime}
             displayPrice={displayPrice}
             displayStopsAmount={displayStopsAmount}
-            displayTransitTime={displayTransitTime}
-            displayDestinationTime={displayDestinationTime}
             asyncSortByPriceAction={asyncSortByPriceAction}
             asyncSortBySpeedAction={asyncSortBySpeedAction}
         />

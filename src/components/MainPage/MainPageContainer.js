@@ -38,7 +38,7 @@ const MainPageContainer = () => {
             asyncSortByPriceAction={asyncSortByPriceAction}
             asyncSortBySpeedAction={asyncSortBySpeedAction}
         />
-    )
+    );
 }
 
 export default MainPageContainer;

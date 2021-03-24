@@ -7,23 +7,23 @@ import Checkbox from './Checkbox';
 import { StyledCheckbox } from '../../styled/Styles';
 import { TransfersLabel } from '../../styled/TransfersCard/TransfersCardStyles';
 
-const TransfersCard = ({ toggleCheckbox, initialValues, checkboxOptions }) => (
+const TransfersCard = ({ onToggleCheckbox, initialValues, checkboxOptions }) => (
     <StyledCheckbox>
         <Card.Body>
             <Formik initialValues={initialValues}>
                 {formik => (
                     <Form>
-                        <TransfersLabel>КОЛИЧЕСТВО ПЕРЕСАДОК</TransfersLabel>
+                        <TransfersLabel>STOPS AMOUNT</TransfersLabel>
                         <Checkbox
                             name="checkboxOptions"
                             options={checkboxOptions}
-                            toggleCheckbox={toggleCheckbox}
+                            onToggleCheckbox={onToggleCheckbox}
                         />
                     </Form>
                 )}
             </Formik>
         </Card.Body>
     </StyledCheckbox>
-)
+);
 
 export default TransfersCard;

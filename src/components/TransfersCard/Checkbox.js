@@ -7,14 +7,14 @@ import {
   CheckboxField
 } from '../../styled/TransfersCard/TransfersCardStyles';
 
-const Checkbox = ({ toggleCheckbox, name, options }) => (
+const Checkbox = ({ onToggleCheckbox, name, options }) => (
   <FieldArray
     render={array => (
       <div>
         {options.map(item => (
           <CheckboxDiv
             key={item.id}
-            onChange={() => toggleCheckbox(item)}
+            onChange={() => onToggleCheckbox(item)}
           >
             <CheckboxText
               className="form-check-label"
@@ -32,6 +32,6 @@ const Checkbox = ({ toggleCheckbox, name, options }) => (
       </div>
     )}
   />
-)
+);
 
 export default Checkbox;

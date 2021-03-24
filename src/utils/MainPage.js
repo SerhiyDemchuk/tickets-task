@@ -23,7 +23,13 @@ const calculateReturnTimeValue = (destinationTime, durationTime, count) => {
     let minutes = 0;
 
     if (count === 'hours') {
-        const hours = sum > 24 ? sum - 24 : sum;
+        if (sum > 24) {
+            hours = sum - 24;
+        } else if (sum === 24) {
+            hours = 0;
+        } else {
+            hours = sum;
+        }
         return hours;
     } else if (count === 'minutes') {
         if (sum > 60 || sum === 60) {
@@ -36,7 +42,7 @@ const calculateReturnTimeValue = (destinationTime, durationTime, count) => {
     }
 }
 
-const displayTransitTime = (time) => {
+const returnTransitTime = time => {
     const hours = (time / 60);
     const rhours = Math.floor(hours);
     const minutes = (hours - rhours) * 60;
@@ -44,21 +50,25 @@ const displayTransitTime = (time) => {
     return [rhours, rminutes];
 }
 
+const convertTimeToLeadingZero = (time, value) => {
+    return (time + value < 10 ? '0' : '') + time;
+}
+
 export const displayTime = (destination, duration) => {
     const convertedTime = new Date(destination);
-    const startTripHours = (convertedTime.getHours() < 10 ? '0' : '') + convertedTime.getHours();
-    const startTripMinutes = (convertedTime.getMinutes() < 10 ? '0' : '') + convertedTime.getMinutes();
+    const startTripHours = convertTimeToLeadingZero(convertedTime.getHours(), 0);
+    const startTripMinutes = convertTimeToLeadingZero(convertedTime.getMinutes(), 0);
 
     const destinationHours = convertedTime.getHours();
     const destinationMinutes = convertedTime.getMinutes();
 
-    const [durationHours, durationMinutes] = displayTransitTime(duration);
+    const [durationHours, durationMinutes] = returnTransitTime(duration);
 
     const backDestinationHour = calculateReturnTimeValue(durationHours, destinationHours, 'hours');
     const [hour, backDestinationMinutes] = calculateReturnTimeValue(durationMinutes, destinationMinutes, 'minutes');
 
-    const endTripHours = (backDestinationHour + hour < 10 ? '0' : '') + backDestinationHour;
-    const endTripMinutes = (backDestinationMinutes < 10 ? '0' : '') + backDestinationMinutes;
+    const endTripHours = convertTimeToLeadingZero(backDestinationHour, hour);
+    const endTripMinutes = convertTimeToLeadingZero(backDestinationMinutes, 0);
 
     if (destination === null) {
         return `${durationHours}ч ${durationMinutes}м`
@@ -67,19 +77,19 @@ export const displayTime = (destination, duration) => {
     };
 }
 
-export const displayPrice = (currency) => {
+export const displayPrice = currency => {
     return currency.toLocaleString('ru-RU', {
         style: 'decimal',
         minimumFractionDigits: 0
     }) + ' Р';
 }
 
-export const displayStopsAmount = (stops) => {
+export const displayStopsAmount = stops => {
     if (stops.length === 0) {
-        return 'Без пересадок';
+        return 'NO STOPS';
     } else if (stops.length === 1) {
-        return '1 пересадка'
+        return '1 STOP'
     } else if (stops.length > 1) {
-        return `${stops.length} пересадки`
+        return `${stops.length} STOPS`
     }
 }

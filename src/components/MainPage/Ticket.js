@@ -43,6 +43,6 @@ const Ticket = ({
             ))
         }
     </TicketCard>
-)
+);
 
 export default Ticket;
